@@ -6,6 +6,7 @@ class NumericBox : public Control {
 
 private:
 	int width;
+	int height = 3;
 	int min;
 	int max;
 	int value = 0;
@@ -16,6 +17,7 @@ public:
 	void SetValue(int _value);
 	int GetValue();
 	int getWidth();
+	int getHeight();
 	bool canGetFocus();
 	void draw(Graphics g, int i, int j, size_t p);
 	void keyDown(int keyCode, char character);

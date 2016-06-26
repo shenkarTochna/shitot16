@@ -21,6 +21,10 @@ int NumericBox::getWidth() {
 	return this->width;
 }
 
+int NumericBox::getHeight() {
+	return this->height;
+}
+
 bool NumericBox::canGetFocus() {
 	return true;
 }

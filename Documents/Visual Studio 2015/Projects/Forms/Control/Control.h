@@ -9,6 +9,7 @@ private:
 	int left;
 	int top;
 	int width;
+	int height;
 	static Control* focus;
 
 public:
@@ -25,9 +26,10 @@ public:
 	int getTop();
 	virtual void setWidth(int _width);
 	virtual int getWidth() = 0;
+	virtual int getHeight() = 0;
 	virtual void isFocused();
-	virtual void mousePressed(int x, int y, DWORD button);
-	virtual void keyDown(int keyCode, char character);
+	virtual void mousePressed(int x, int y, DWORD button)=0;
+	virtual void keyDown(int keyCode, char character)=0;
 	virtual bool canGetFocus() = 0;
 	virtual void setValue(int value);
 

@@ -62,11 +62,11 @@ void Control::setWidth(int _width) {
 
 
 
+
 void Control::setValue(int value) {}
 void Control::isFocused() {}
-void Control::mousePressed(int x, int y, DWORD button) {}
 
 void Control::getAllControls(vector <Control*>* c) {};
 
-void Control::keyDown(int keyCode, char character) {};
+
 

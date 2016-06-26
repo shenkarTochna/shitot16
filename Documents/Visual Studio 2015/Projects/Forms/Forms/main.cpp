@@ -32,7 +32,7 @@ void main() {
 	tAddress.SetValue("221B Baker Street, London");
 	Button bSubmit(10);
 	bSubmit.SetValue("Submit");
-	checkList clInterests(3, 15, { "Sports", "Books", "Movies" });
+	CheckList clInterests(3, 15, { "Sports", "Books", "Movies" });
 	clInterests.SelectIndex(1);
 	NumericBox nAge(7, 18, 120);
 	nAge.SetValue(23);
