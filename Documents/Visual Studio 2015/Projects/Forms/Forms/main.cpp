@@ -9,6 +9,7 @@
 #include "../NumericBox/NumericBox.h"
 #include "../RadioList/RadioList.h"
 #include "../TextBox/TextBox.h"
+#include "../ComboBox/ComboBox.h"
 
 using namespace std;
 
@@ -34,10 +35,11 @@ void main() {
 	bSubmit.SetValue("Submit");
 	CheckList clInterests(3, 15, { "Sports", "Books", "Movies" });
 	clInterests.SelectIndex(1);
-	NumericBox nAge(7, 18, 120);
+	NumericBox nAge(15, 18, 120);
 	nAge.SetValue(23);
 	RadioList rSex(2, 15, { "Male", "Female" });
-
+	ComboBox cCountry(20, { "Israel", "Great Britain", "United States" });
+	cCountry.SetSelectedIndex(1);
 
 	Panel main(25, 55);
 	main.addControl(lName, 1, 2);
@@ -52,6 +54,7 @@ void main() {
 	main.addControl(clInterests, 25, 15);
 	main.addControl(nAge, 25, 20);
 	main.addControl(bSubmit, 1, 22);
+	main.addControl(cCountry, 25, 8);
 
 	Control::setFocus(tName);
 	EventEngine engine;

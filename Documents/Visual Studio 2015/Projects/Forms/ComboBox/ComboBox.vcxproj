@@ -19,14 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9285DF5A-280D-473E-B8AD-17690CD46CA7}</ProjectGuid>
+    <ProjectGuid>{28BFC127-9E6B-4E34-BD41-E84E19BAD0F5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Forms</RootNamespace>
+    <RootNamespace>ComboBox</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -89,16 +89,11 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\TextBox;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\RadioList;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Panel;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\NumericBox;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Label;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Graphics;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\EventEngine;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Control;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Button;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\CheckList;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\EventEngine;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Control;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\CheckList;C:\Users\Tal Kohen\Documents\Visual Studio 2015\Projects\Forms\Button;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
-    <ProjectReference>
-      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
-    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -151,42 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ComboBox.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Button\Button.vcxproj">
-      <Project>{05f03b4b-822b-4a84-ba42-e431cc7f7617}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\CheckList\CheckList.vcxproj">
-      <Project>{64d7eb7f-f59c-4528-a4b0-49588213e10d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ComboBox\ComboBox.vcxproj">
-      <Project>{28bfc127-9e6b-4e34-bd41-e84e19bad0f5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Control\Control.vcxproj">
-      <Project>{55bca2c9-3fa3-4484-b5dc-e60f27c68281}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\EventEngine\EventEngine.vcxproj">
-      <Project>{024f4a6a-2a09-4770-964b-d35fda749fdd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
-      <Project>{6cd1cfb2-193c-433e-b360-c03fc412ad77}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Label\Label.vcxproj">
-      <Project>{e1eb44af-1210-4b73-b536-d11df9cfa8fd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\NumericBox\NumericBox.vcxproj">
-      <Project>{7ad32c46-0ebd-4b61-a93c-9a94b24c2007}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Panel\Panel.vcxproj">
-      <Project>{169b814c-87fb-43d7-922d-a03eb62b2ef0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\RadioList\RadioList.vcxproj">
-      <Project>{94bd6883-9699-4bf4-a538-22392da360a0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\TextBox\TextBox.vcxproj">
-      <Project>{3217d392-2460-4bea-b902-5bb8a349c10d}</Project>
-    </ProjectReference>
+    <ClInclude Include="ComboBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

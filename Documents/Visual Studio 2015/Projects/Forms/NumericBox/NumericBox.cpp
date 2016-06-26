@@ -33,21 +33,21 @@ void NumericBox::draw(Graphics g, int i, int j, size_t p) {
 
 	g.write(i, j + 1, "[-]");
 	g.write(i + 3, j, "\xC9");
-	for (int i = 0; i < this->width; i++) {
+	for (int k = 0; k < this->getWidth() -8; k++) {
 		g.write("\xCD");
 	}
 	g.write("\xBB\n");
 	g.write(i + 3, j + 1, "\xBA");
-	g.write(i + this->width + 4, j + 1, "\xBA");
+	g.write(i + this->getWidth()- 4, j + 1, "\xBA");
 	g.write(i + 3, j + 2, "\xC8");
-	for (int i = 0; i < this->width; i++) {
+	for (int k = 0; k < this->getWidth() -8; k++) {
 		g.write("\xCD");
 	}
 	g.write("\xBC");
 
 	std::string val = std::to_string(this->value);
-	g.write(i + 4, j + 1, val);
-	g.write(i + this->width + 5, j + 1, "[+]");
+	g.write(i+this->getWidth() /2, j + 1, val);
+	g.write(i + this->getWidth() -3, j + 1, "[+]");
 
 }
 
@@ -83,16 +83,16 @@ void NumericBox::keyDown(int keyCode, char character) {
 
 void NumericBox::mousePressed(int x, int y, DWORD button) {
 
-
-
 	this->setCursorVisibility(true);
-	moveTo(this->getLeft() + 1, this->getTop() + 1);
+	moveTo(x,y);
 
-	const int n = this->width;
-	int c;
+	if (x == this->getLeft() + 1) {
+		this->SetValue(this->value - 1);
+	}
 
-	do {
-		c = getchar();
-		putchar(c);
-	} while (c != '.');
+	if (x == (this->getLeft()+this->getWidth()-2)) {
+		this->SetValue(this->value + 1);
+
+	}
+
 }
