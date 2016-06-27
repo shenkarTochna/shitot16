@@ -50,11 +50,12 @@ void main() {
 	main.addControl(lAge, 1, 20);
 	main.addControl(tName, 25, 2);
 	main.addControl(tAddress, 25, 5);
+	main.addControl(cCountry, 25, 8);
 	main.addControl(rSex, 25, 11);
 	main.addControl(clInterests, 25, 15);
 	main.addControl(nAge, 25, 20);
 	main.addControl(bSubmit, 1, 22);
-	main.addControl(cCountry, 25, 8);
+
 
 	Control::setFocus(tName);
 	EventEngine engine;
