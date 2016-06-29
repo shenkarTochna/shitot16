@@ -5,16 +5,17 @@
 
 class Control : public Graphics {
 
-private:
+protected:
 	int left;
 	int top;
 	int width;
 	int height;
+	bool showed = true;
 	static Control* focus;
 
 public:
-	void Show();
-	void Hide();
+	virtual void Show() =0;
+	virtual void Hide() =0;
 	void SetBorder(Color border);
 	virtual void draw(Graphics g, int i, int j, size_t p) = 0;
 	virtual void getAllControls(vector <Control*>* c);
@@ -25,8 +26,9 @@ public:
 	int getLeft();
 	int getTop();
 	virtual void setWidth(int _width);
-	virtual int getWidth() = 0;
-	virtual int getHeight() = 0;
+	int getWidth();
+	int getHeight();
+	bool getShowed();
 	virtual void isFocused();
 	virtual void mousePressed(int x, int y, DWORD button)=0;
 	virtual void keyDown(int keyCode, char character)=0;

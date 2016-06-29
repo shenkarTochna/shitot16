@@ -56,6 +56,7 @@ int Control::getTop() {
 	return this->top;
 }
 
+
 void Control::setWidth(int _width) {
 	this->width = _width;
 }
@@ -67,6 +68,18 @@ void Control::setValue(int value) {}
 void Control::isFocused() {}
 
 void Control::getAllControls(vector <Control*>* c) {};
+
+int Control::getWidth() {
+	return this->width;
+}
+
+int Control::getHeight() {
+	return this->height;
+}
+
+bool Control::getShowed() {
+	return this->showed;
+}
 
 
 

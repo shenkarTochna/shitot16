@@ -117,3 +117,16 @@ void  RadioList::SetSelectedIndex(size_t index) {
 
 	//this->checked[index] = 0;
 //}
+
+void RadioList::Show() {
+	this->showed = true;
+}
+
+void RadioList::Hide() {
+	this->showed = true;
+}
+
+
+bool RadioList::getShowed() {
+	return this->showed;
+}

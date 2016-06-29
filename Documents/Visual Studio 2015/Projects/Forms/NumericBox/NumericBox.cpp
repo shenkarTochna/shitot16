@@ -5,6 +5,7 @@
 
 NumericBox::NumericBox(int _width, int _min, int _max) {
 	this->width = _width;
+	this->height = 3;
 	this->min = _min;
 	this->max = _max;
 }
@@ -95,4 +96,16 @@ void NumericBox::mousePressed(int x, int y, DWORD button) {
 
 	}
 
+}
+
+void NumericBox::Show() {
+	this->showed = true;
+}
+
+void NumericBox::Hide() {
+	this->showed = true;
+}
+
+bool NumericBox::getShowed() {
+	return this->showed;
 }

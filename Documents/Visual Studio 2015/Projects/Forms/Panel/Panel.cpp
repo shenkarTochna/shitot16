@@ -49,9 +49,19 @@ void Panel::draw(Graphics g, int i, int j, size_t p) {
 	}
 	g.write("\xBC");
 
+	for (int k = 0; k < this->controls.size()-1 ; k++) {
+		if ((controls[k]->getLeft() + controls[k]->getWidth()) > controls[k + 1]->getLeft() ||
+			(controls[k]->getTop() + controls[k]->getHeight()) > controls[k + 1]->getTop()) {
+			controls[k + 1]->Hide();
+
+		}
+	}
 
 	for (int k = 0; k < this->controls.size(); k++) {
-		controls[k]->draw(g, controls[k]->getLeft(), controls[k]->getTop(), 0);
+
+		if (controls[k]->getShowed() == true) {
+			controls[k]->draw(g, controls[k]->getLeft(), controls[k]->getTop(), 0);
+		}
 	}
 }
 
@@ -67,7 +77,6 @@ void Panel::mousePressed(int x, int y, DWORD button) {
 		{
 			setFocus(*this->controls[k]);
 			this->controls[k]->mousePressed(x, y, button);
-			
 
 			break;
 		}
@@ -75,3 +84,16 @@ void Panel::mousePressed(int x, int y, DWORD button) {
 
 };
 void Panel::keyDown(int keyCode, char character) {};
+
+void Panel::Show() {
+	this->showed = true;
+}
+
+void Panel::Hide() {
+	this->showed = true;
+}
+
+
+bool Panel::getShowed() {
+	return this->showed;
+}
