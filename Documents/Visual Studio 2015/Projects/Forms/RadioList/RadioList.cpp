@@ -123,7 +123,7 @@ void RadioList::Show() {
 }
 
 void RadioList::Hide() {
-	this->showed = true;
+	this->showed = false;
 }
 
 

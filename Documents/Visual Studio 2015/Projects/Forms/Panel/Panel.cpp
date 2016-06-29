@@ -50,10 +50,11 @@ void Panel::draw(Graphics g, int i, int j, size_t p) {
 	g.write("\xBC");
 
 	for (int k = 0; k < this->controls.size()-1 ; k++) {
-		if ((controls[k]->getLeft() + controls[k]->getWidth()) > controls[k + 1]->getLeft() ||
-			(controls[k]->getTop() + controls[k]->getHeight()) > controls[k + 1]->getTop()) {
+		if ((controls[k]->getTop() + controls[k]->getHeight()) > controls[k + 1]->getTop()) {
 			controls[k + 1]->Hide();
-
+		}
+		else {
+			controls[k + 1]->Show();
 		}
 	}
 
@@ -62,6 +63,7 @@ void Panel::draw(Graphics g, int i, int j, size_t p) {
 		if (controls[k]->getShowed() == true) {
 			controls[k]->draw(g, controls[k]->getLeft(), controls[k]->getTop(), 0);
 		}
+
 	}
 }
 
