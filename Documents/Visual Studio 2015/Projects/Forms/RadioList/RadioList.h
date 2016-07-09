@@ -1,6 +1,6 @@
 #pragma once
 #include "../Control/Control.h"
-
+#include "../CheckList/CheckList.h"
 class RadioList : public Control {
 
 private:

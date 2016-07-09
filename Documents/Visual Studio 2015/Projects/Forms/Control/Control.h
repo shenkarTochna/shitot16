@@ -3,6 +3,11 @@
 #include "../Graphics/Graphics.h"
 
 
+enum class BorderType { Single, Double, None };
+enum class ForegroundColor { Red, Blue, Green, Purple, Teal, Yellow, White, Black };
+enum class BackgroundColor { Red, Blue, Green, Purple, Teal, Yellow, White, Black };
+
+
 class Control : public Graphics {
 
 protected:
@@ -11,12 +16,12 @@ protected:
 	int width;
 	int height;
 	bool showed = true;
+	BorderType border = BorderType::None;
 	static Control* focus;
 
 public:
 	virtual void Show() =0;
 	virtual void Hide() =0;
-	void SetBorder(Color border);
 	virtual void draw(Graphics g, int i, int j, size_t p) = 0;
 	virtual void getAllControls(vector <Control*>* c);
 	static Control* getFocus();
@@ -29,16 +34,15 @@ public:
 	int getWidth();
 	int getHeight();
 	bool getShowed();
+	BorderType getBorder();
 	virtual void isFocused();
 	virtual void mousePressed(int x, int y, DWORD button)=0;
 	virtual void keyDown(int keyCode, char character)=0;
 	virtual bool canGetFocus() = 0;
 	virtual void setValue(int value);
+	void SetBorder(BorderType _border);
+	void drawBorder(BorderType _border);
 
-
-	enum class BorderType { Single, Double, None };
-	enum class ForegroundColor { Red, Blue, Green, Purple, Teal, Yellow, White, Black };
-	enum class BackgroundColor { Red, Blue, Green, Purple, Teal, Yellow, White, Black };
 
 
 };

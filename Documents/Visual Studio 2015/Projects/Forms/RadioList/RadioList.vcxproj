@@ -71,6 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -150,6 +151,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RadioList.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheckList\CheckList.vcxproj">
+      <Project>{64d7eb7f-f59c-4528-a4b0-49588213e10d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

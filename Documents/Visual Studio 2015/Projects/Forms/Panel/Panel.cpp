@@ -62,6 +62,7 @@ void Panel::draw(Graphics g, int i, int j, size_t p) {
 
 		if (controls[k]->getShowed() == true) {
 			controls[k]->draw(g, controls[k]->getLeft(), controls[k]->getTop(), 0);
+			controls[k]->drawBorder (controls[k]->getBorder());
 		}
 
 	}

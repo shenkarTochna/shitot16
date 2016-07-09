@@ -40,6 +40,11 @@ void main() {
 	RadioList rSex(2, 15, { "Male", "Female" });
 	ComboBox cCountry(20, { "Israel", "Great Britain", "United States" });
 	cCountry.SetSelectedIndex(1);
+	cCountry.setBackground(Color::Orange);
+	clInterests.SetBorder(BorderType::Single);
+	cCountry.SetBorder(BorderType::Double);
+	tAddress.SetBorder(BorderType::Double);
+	rSex.SetBorder(BorderType::Single);
 
 	Panel main(25, 55);
 	main.addControl(lName, 1, 2);
