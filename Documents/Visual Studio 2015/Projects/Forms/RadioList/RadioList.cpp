@@ -2,29 +2,16 @@
 #include "RadioList.h"
 
 
-RadioList::RadioList(int _height, int _width, vector<string> _options) {
+RadioList::RadioList(int _height, int _width, vector<string> _options)
+:CheckList(_height, _width, _options) {
 
-	this->height = _height;
+ this->height = _height;
 	this->width = _width;
 	this->options = _options;
 	this->checked = 0 ;
 
 }
 
-
-bool RadioList::canGetFocus() {
-	return true;
-}
-
-
-int RadioList::getWidth() {
-	return this->width;
-}
-
-
-int RadioList::getHeight() {
-	return this->height;
-}
 
 void RadioList::draw(Graphics g, int i, int j, size_t p) {
 
@@ -108,25 +95,3 @@ void  RadioList::SetSelectedIndex(size_t index) {
 };
 
 
-//void RadioList::SelectIndex(size_t index) {
-
-	//this->checked[index] = 1;
-//}
-
-//void RadioList::DeselectIndex(size_t index) {
-
-	//this->checked[index] = 0;
-//}
-
-void RadioList::Show() {
-	this->showed = true;
-}
-
-void RadioList::Hide() {
-	this->showed = false;
-}
-
-
-bool RadioList::getShowed() {
-	return this->showed;
-}

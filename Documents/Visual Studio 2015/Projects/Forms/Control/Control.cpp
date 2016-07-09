@@ -26,7 +26,7 @@ void Control::setFocus(Control &control) {
 	control.setCursorVisibility(true);
 	focus = &control;
 
-	control.setForeground(Color::Red);
+	
 
 
 
@@ -130,3 +130,13 @@ void Control::SetBorder(BorderType _border) {
 	this->border = _border;
 	}
 
+void Control :: SetForeground(Color color) {
+
+	this->setForeground(color);
+	
+}
+
+
+void Control :: SetBackground(Color color) {
+
+}

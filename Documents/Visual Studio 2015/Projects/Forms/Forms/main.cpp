@@ -40,13 +40,13 @@ void main() {
 	RadioList rSex(2, 15, { "Male", "Female" });
 	ComboBox cCountry(20, { "Israel", "Great Britain", "United States" });
 	cCountry.SetSelectedIndex(1);
-	cCountry.setBackground(Color::Orange);
+	cCountry.SetForeground(Color::Green);
 	clInterests.SetBorder(BorderType::Single);
 	cCountry.SetBorder(BorderType::Double);
 	tAddress.SetBorder(BorderType::Double);
 	rSex.SetBorder(BorderType::Single);
 
-	Panel main(25, 55);
+	Panel main(27, 55);
 	main.addControl(lName, 1, 2);
 	main.addControl(lAddress, 1, 5);
 	main.addControl(lCountry, 1, 8);
@@ -59,7 +59,7 @@ void main() {
 	main.addControl(rSex, 25, 11);
 	main.addControl(clInterests, 25, 15);
 	main.addControl(nAge, 25, 20);
-	main.addControl(bSubmit, 1, 22);
+	main.addControl(bSubmit, 25, 25);
 
 
 	Control::setFocus(tName);

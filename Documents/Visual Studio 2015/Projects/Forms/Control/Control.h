@@ -17,6 +17,7 @@ protected:
 	int height;
 	bool showed = true;
 	BorderType border = BorderType::None;
+	ForegroundColor foreground = ForegroundColor::Yellow;
 	static Control* focus;
 
 public:
@@ -42,6 +43,8 @@ public:
 	virtual void setValue(int value);
 	void SetBorder(BorderType _border);
 	void drawBorder(BorderType _border);
+	void SetForeground(Color color);
+	void SetBackground(Color color);
 
 
 
