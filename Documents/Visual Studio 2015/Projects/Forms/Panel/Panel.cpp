@@ -7,7 +7,9 @@ using namespace std;
 
 
 Panel::Panel(int _height, int _width) {
-	this->height = _height; this->width = _width;
+	this->height = _height;
+	this->width = _width;
+	this->showed = true;
 
 }
 
@@ -49,14 +51,7 @@ void Panel::draw(Graphics g, int i, int j, size_t p) {
 	}
 	g.write("\xBC");
 
-	for (int k = 0; k < this->controls.size()-1 ; k++) {
-		if ((controls[k]->getTop() + controls[k]->getHeight()) > controls[k + 1]->getTop()) {
-			controls[k + 1]->Hide();
-		}
-		else {
-			controls[k + 1]->Show();
-		}
-	}
+
 
 	for (int k = 0; k < this->controls.size(); k++) {
 

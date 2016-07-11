@@ -8,11 +8,11 @@ using namespace std;
 Control* Control::focus = 0;
 
 void Control::Show() {
-	cout << "show" << endl;
+	this->showed = true;
 }
 
 void Control::Hide() {
-	cout << "hide";
+	this->showed = false;
 }
 
 
@@ -23,7 +23,7 @@ Control* Control::getFocus() {
 
 
 void Control::setFocus(Control &control) {
-	control.setCursorVisibility(true);
+	control.graphics.setCursorVisibility(true);
 	focus = &control;
 
 	
@@ -85,20 +85,20 @@ void Control::drawBorder(BorderType border) {
 
 	case BorderType::Double:
 
-		write(i, j, "\xC9");
+		graphics.write(i, j, "\xC9");
 		for (int k = 0; k < this->width; k++) {
-			write("\xCD");
+			graphics.write("\xCD");
 		}
-		write("\xBB\n");
+		graphics.write("\xBB\n");
 		for (int k = 1; k < this->height+1; k++) {
-			write(i, j + k, "\xBA");
-			write(i + this->width + 1, j + k, "\xBA\n");
+			graphics.write(i, j + k, "\xBA");
+			graphics.write(i + this->width + 1, j + k, "\xBA\n");
 		}
-		write(i, j + this->height+1, "\xC8");
+		graphics.write(i, j + this->height+1, "\xC8");
 		for (int i = 0; i < this->width; i++) {
-			write("\xCD");
+			graphics.write("\xCD");
 		}
-		write("\xBC");
+		graphics.write("\xBC");
 		break;
 
 	case BorderType::None:
@@ -107,20 +107,20 @@ void Control::drawBorder(BorderType border) {
 
 	case BorderType::Single:
 
-		write(i, j, "\xDA");
+		graphics.write(i, j, "\xDA");
 		for (int k = 0; k < this->width; k++) {
-			write("\xC4");
+			graphics.write("\xC4");
 		}
-		write("\xBF\n");
+		graphics.write("\xBF\n");
 		for (int k = 1; k < this->height+1; k++) {
-			write(i, j + k, "\xB3");
-			write(i + this->width + 1, j + k, "\xB3\n");
+			graphics.write(i, j + k, "\xB3");
+			graphics.write(i + this->width + 1, j + k, "\xB3\n");
 		}
-		write(i, j + this->height+1, "\xC0");
+		graphics.write(i, j + this->height+1, "\xC0");
 		for (int i = 0; i < this->width; i++) {
-			write("\xC4");
+			graphics.write("\xC4");
 		}
-		write("\xD9");
+		graphics.write("\xD9");
 		break;
 	}
 }
@@ -130,13 +130,3 @@ void Control::SetBorder(BorderType _border) {
 	this->border = _border;
 	}
 
-void Control :: SetForeground(Color color) {
-
-	this->setForeground(color);
-	
-}
-
-
-void Control :: SetBackground(Color color) {
-
-}

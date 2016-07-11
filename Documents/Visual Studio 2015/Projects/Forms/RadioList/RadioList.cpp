@@ -9,6 +9,7 @@ RadioList::RadioList(int _height, int _width, vector<string> _options)
 	this->width = _width;
 	this->options = _options;
 	this->checked = 0 ;
+	this->showed = true;
 
 }
 

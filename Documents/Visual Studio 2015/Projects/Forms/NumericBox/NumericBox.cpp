@@ -8,6 +8,7 @@ NumericBox::NumericBox(int _width, int _min, int _max) {
 	this->height = 3;
 	this->min = _min;
 	this->max = _max;
+	this->showed = true;
 }
 
 void NumericBox::SetValue(int _value) {
