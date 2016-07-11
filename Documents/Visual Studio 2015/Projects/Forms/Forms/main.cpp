@@ -26,7 +26,9 @@ public:
 	
 	void  MousePressed(Button &b, int x, int y, bool isLeft)
 	{
+		_c.SetBackground(Color::Green);
 		_c.Show();
+		
 	}
 
 };
@@ -62,10 +64,14 @@ void main() {
 	results.SetTitle("WELCOME !");
 	results.SetText("Hi, " + tName.GetValue() + "and welcome to our form system.");
 	
+	tAddress.SetBackground(Color::Green);
+	tAddress.SetForeground(Color::Blue);
+	cCountry.SetBackground(Color::Purple);
+	cCountry.SetForeground(Color::Orange);
 	bSubmit.AddListener(MyListener::MyListener(results));
-	bSubmit.SetBackground(BackgroundColor::Green);
+	bSubmit.SetBackground(Color::Green);
 
-	cCountry.SetForeground(ForegroundColor::Green);
+	cCountry.SetForeground(Color::Green);
 	clInterests.SetBorder(BorderType::Single);
 	cCountry.SetBorder(BorderType::Double);
 	tAddress.SetBorder(BorderType::Double);
@@ -86,6 +92,8 @@ void main() {
 	main.addControl(nAge, 25, 20);
 	main.addControl(bSubmit, 25, 25);
 	main.addControl(results, 5, 5);
+
+	main.SetBackground(Color::Cyan);
 
 	Control::setFocus(tName);
 	EventEngine engine;

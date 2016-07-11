@@ -15,30 +15,34 @@ RadioList::RadioList(int _height, int _width, vector<string> _options)
 
 
 void RadioList::draw(Graphics g, int i, int j, size_t p) {
+	graphics.setBackground(this->background);
+	graphics.setForeground(this->foreground);
 
 	for (int k = 0; k < this->options.size(); k++) {
 
 
 		if (this->checked == k) {
-			g.write(i, j + k, "[X]");
-			g.write(i + 7, j + k, this->options[k]);
+			graphics.write(i, j + k, "[X]");
+			graphics.write(i + 7, j + k, this->options[k]);
 		}
 		else {
-			g.write(i, j + k, "[ ]");
-			g.write(i + 7, j + k, this->options[k]);
+			graphics.write(i, j + k, "[ ]");
+			graphics.write(i + 7, j + k, this->options[k]);
 		}
 
 	}
 
+	graphics.setForeground(Color::White);
+	graphics.setBackground(Color::Black);
 }
 
 void  RadioList::keyDown(int keyCode, char character) {
 
-	this->setCursorVisibility(true);
+	this->graphics.setCursorVisibility(true);
 
 	for (int i = 0; i < this->options.size(); i++)
 	{
-		moveTo(this->getLeft() + 1, this->getTop() + i);
+		graphics.moveTo(this->getLeft() + 1, this->getTop() + i);
 		int c = 0;
 		c = getchar();
 		do {
@@ -52,7 +56,7 @@ void  RadioList::keyDown(int keyCode, char character) {
 			{
 				if (i != k) {
 					this->checked = 0;
-					moveTo(this->getLeft() + 1, this->getTop() + k);
+					graphics.moveTo(this->getLeft() + 1, this->getTop() + k);
 					putchar(' ');
 				}
 				break;
@@ -71,12 +75,12 @@ void RadioList::mousePressed(int x, int y, DWORD button) {
 	{
 		if (x == (this->getLeft() + 1) && y == (this->getTop() + i)) {
 
-			moveTo(this->getLeft() + 1, this->getTop() + i);
+			graphics.moveTo(this->getLeft() + 1, this->getTop() + i);
 			if (this->checked != i) {
-				moveTo(this->getLeft() + 1, this->getTop() + this->checked);
+				graphics.moveTo(this->getLeft() + 1, this->getTop() + this->checked);
 				putchar(' ');
 				this->checked = i;
-				moveTo(this->getLeft() + 1, this->getTop() + i);
+				graphics.moveTo(this->getLeft() + 1, this->getTop() + i);
 				putchar('X');
 				
 			}

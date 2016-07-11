@@ -7,6 +7,14 @@ using namespace std;
 
 Control* Control::focus = 0;
 
+Control::Control(){
+
+}
+
+Control::~Control() {
+
+}
+
 void Control::Show() {
 	this->showed = true;
 }
@@ -25,10 +33,6 @@ Control* Control::getFocus() {
 void Control::setFocus(Control &control) {
 	control.graphics.setCursorVisibility(true);
 	focus = &control;
-
-	
-
-
 
 }
 
@@ -130,3 +134,11 @@ void Control::SetBorder(BorderType _border) {
 	this->border = _border;
 	}
 
+void Control:: SetForeground(Color color) { 
+	foreground = color;
+	this->graphics.setForeground(color);
+}
+
+void Control::SetBackground(Color color) { 
+	background = color;
+}

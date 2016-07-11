@@ -11,19 +11,21 @@ enum class BackgroundColor { Red, Blue, Green, Purple, Teal, Yellow, White, Blac
 class Control  {
 
 protected:
+
 	int left;
 	int top;
 	int width;
 	int height;
 	bool showed;
 	BorderType border = BorderType::None;
-	Graphics graphics;
-	ForegroundColor foreground = ForegroundColor::Yellow;
-	BackgroundColor background = BackgroundColor::Blue;
+	Graphics graphics; 
+	Color foreground = Color::Green;
+	Color background = Color::Blue;
 	static Control* focus;
 
 public:
-	Control(DWORD input, DWORD output);
+	Control();
+	~Control();
 	virtual void Show() =0;
 	virtual void Hide() =0;
 	virtual void draw(Graphics g, int i, int j, size_t p) = 0;
@@ -46,8 +48,8 @@ public:
 	virtual void setValue(int value);
 	void SetBorder(BorderType _border);
 	void drawBorder(BorderType _border);
-	virtual void SetForeground(ForegroundColor color) { foreground = color; }
-	virtual void SetBackground(BackgroundColor color) { background = color; }
+	virtual void SetForeground(Color color);
+	virtual void SetBackground(Color color);
 
 
 };

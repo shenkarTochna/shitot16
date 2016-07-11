@@ -25,13 +25,13 @@ void RadioBox::draw(Graphics g, int i, int j, size_t p) {
 
 	for (int k = 0; k < this->options.size(); k++) {
 		if (this->checked[k] == 0) {
-			g.write(i, j + k, "[ ]");
-			g.write(i + 7, j + k, this->options[k]);
+			graphics.write(i, j + k, "[ ]");
+			graphics.write(i + 7, j + k, this->options[k]);
 		}
 
 		if (this->checked[k] == 1) {
-			g.write(i, j + k, "[X]");
-			g.write(i + 7, j + k, this->options[k]);
+			graphics.write(i, j + k, "[X]");
+			graphics.write(i + 7, j + k, this->options[k]);
 		}
 
 	}

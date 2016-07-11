@@ -34,33 +34,38 @@ void Panel::addControl(Control& control, int left, int top) {
 
 }
 
-void Panel::draw(Graphics g, int i, int j, size_t p) {
+void Panel::draw(Graphics graphics, int i, int j, size_t p) {
+	graphics.setBackground(this->background);
+	graphics.setForeground(this->foreground);
+	
 
-	g.write(i, j, "\xC9");
+	graphics.write(i, j, "\xC9");
 	for (int k = 0; k < this->width; k++) {
-		g.write("\xCD");
+		graphics.write("\xCD");
 	}
-	g.write("\xBB\n");
+	graphics.write("\xBB\n");
 	for (int k = 1; k < this->height; k++) {
-		g.write(i, j + k, "\xBA");
-		g.write(i + this->width + 1, j + k, "\xBA\n");
+		graphics.write(i, j + k, "\xBA");
+		graphics.write(i + this->width + 1, j + k, "\xBA\n");
 	}
-	g.write(i, j + this->height, "\xC8");
+	graphics.write(i, j + this->height, "\xC8");
 	for (int i = 0; i < this->width; i++) {
-		g.write("\xCD");
+		graphics.write("\xCD");
 	}
-	g.write("\xBC");
+	graphics.write("\xBC");
 
 
 
 	for (int k = 0; k < this->controls.size(); k++) {
 
 		if (controls[k]->getShowed() == true) {
-			controls[k]->draw(g, controls[k]->getLeft(), controls[k]->getTop(), 0);
+			controls[k]->draw(graphics, controls[k]->getLeft(), controls[k]->getTop(), 0);
 			controls[k]->drawBorder (controls[k]->getBorder());
 		}
 
 	}
+	graphics.setForeground(Color::White);
+	graphics.setBackground(Color::Black);
 }
 
 void Panel::getAllControls(vector <Control*>* c) { *c = this->controls; }
