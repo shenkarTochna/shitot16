@@ -16,18 +16,20 @@ protected:
 	int top;
 	int width;
 	int height;
+	size_t layer = 0;
 	bool showed;
 	BorderType border = BorderType::None;
 	Graphics graphics; 
-	Color foreground = Color::Green;
-	Color background = Color::Blue;
+	Color foreground = Color::White;
+	Color background = Color::Black;
 	static Control* focus;
+
 
 public:
 	Control();
 	~Control();
-	virtual void Show() =0;
-	virtual void Hide() =0;
+	void Show();
+	void Hide();
 	virtual void draw(Graphics g, int i, int j, size_t p) = 0;
 	virtual void getAllControls(vector <Control*>* c);
 	static Control* getFocus();
@@ -40,8 +42,9 @@ public:
 	int getWidth();
 	int getHeight();
 	bool getShowed();
+	size_t getLayer();
+	void setLayer(size_t _layer);
 	BorderType getBorder();
-	virtual void isFocused();
 	virtual void mousePressed(int x, int y, DWORD button)=0;
 	virtual void keyDown(int keyCode, char character)=0;
 	virtual bool canGetFocus() = 0;
@@ -50,6 +53,7 @@ public:
 	void drawBorder(BorderType _border);
 	virtual void SetForeground(Color color);
 	virtual void SetBackground(Color color);
+	void drawBackground();
 
 
 };

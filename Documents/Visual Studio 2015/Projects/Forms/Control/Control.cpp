@@ -24,6 +24,12 @@ void Control::Hide() {
 }
 
 
+
+bool Control::getShowed() {
+	return this->showed;
+}
+
+
 Control* Control::getFocus() {
 
 	return focus;
@@ -31,9 +37,16 @@ Control* Control::getFocus() {
 
 
 void Control::setFocus(Control &control) {
+	
+	if (getFocus() != NULL) { 
+		getFocus()->SetForeground(Color::White); 
+		getFocus()->setLayer(0); }
+
+	control.graphics.moveTo(control.getLeft(), control.getLeft());
 	control.graphics.setCursorVisibility(true);
 	focus = &control;
-
+	control.setLayer(1);
+	control.SetForeground(Color::Orange);
 }
 
 void Control::setLeft(int _left) {
@@ -61,7 +74,7 @@ void Control::setWidth(int _width) {
 
 
 void Control::setValue(int value) {}
-void Control::isFocused() {}
+
 
 void Control::getAllControls(vector <Control*>* c) {};
 
@@ -73,9 +86,6 @@ int Control::getHeight() {
 	return this->height;
 }
 
-bool Control::getShowed() {
-	return this->showed;
-}
 
 BorderType Control::getBorder() {
 	return this->border;
@@ -88,6 +98,9 @@ void Control::drawBorder(BorderType border) {
 	switch (border) {
 
 	case BorderType::Double:
+
+		graphics.setBackground(this->background);
+		graphics.setForeground(this->foreground);
 
 		graphics.write(i, j, "\xC9");
 		for (int k = 0; k < this->width; k++) {
@@ -141,4 +154,22 @@ void Control:: SetForeground(Color color) {
 
 void Control::SetBackground(Color color) { 
 	background = color;
+}
+
+void Control::drawBackground() {
+
+	graphics.setBackground(this->background);
+	graphics.setForeground(this->foreground);
+	for (int k = this->getTop(); k < this->getTop() + this->getHeight(); k++) {
+		for (int l = this->getLeft(); l < this->getLeft() + this->getWidth(); l++) {
+			graphics.write(l, k, " ");
+		}
+	}
+}
+
+size_t Control :: getLayer() {
+	return this->layer;
+}
+void  Control :: setLayer(size_t _layer) {
+	this->layer = _layer;
 }

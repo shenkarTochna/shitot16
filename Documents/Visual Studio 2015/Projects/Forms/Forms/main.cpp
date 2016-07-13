@@ -14,26 +14,43 @@
 
 using namespace std;
 
-
-struct MyListener : public MouseListener
+// Listeners for the buttons used.
+struct SubmitListener : public MouseListener
 {
 private:
 	Control &_c;
 
 public:
 
-	MyListener(Control &c) : _c(c) { }
+	SubmitListener(Control &c) : _c(c) { }
 	
 	void  MousePressed(Button &b, int x, int y, bool isLeft)
 	{
-		_c.SetBackground(Color::Green);
-		_c.Show();
-		
+			_c.SetBackground(Color::Green);
+			_c.Show();		
 	}
 
 };
 
+struct bOKListener : public MouseListener
+{
+private:
+	Control &_c;
 
+public:
+
+	bOKListener(Control &c) : _c(c) { }
+
+	void  MousePressed(Button &b, int x, int y, bool isLeft)
+	{
+			_c.SetBackground(Color::Black);
+			_c.Hide();
+
+	}
+
+};
+
+// Main function. Creates and sets controls, adds them to panel and runs event engine on panel.
 void main() {
 	Label lName(20);
 	lName.SetValue("Name: ");
@@ -61,21 +78,28 @@ void main() {
 	ComboBox cCountry(20, { "Israel", "Great Britain", "United States" });
 	cCountry.SetSelectedIndex(1);
 	Messagebox results(30, 10);
-	results.SetTitle("WELCOME !");
-	results.SetText("Hi, " + tName.GetValue() + "and welcome to our form system.");
-	
-	tAddress.SetBackground(Color::Green);
-	tAddress.SetForeground(Color::Blue);
-	cCountry.SetBackground(Color::Purple);
-	cCountry.SetForeground(Color::Orange);
-	bSubmit.AddListener(MyListener::MyListener(results));
-	bSubmit.SetBackground(Color::Green);
+	results.SetTitle("SUBMIT");
+	results.SetText("Are you sure?");
 
-	cCountry.SetForeground(Color::Green);
-	clInterests.SetBorder(BorderType::Single);
+
+	
+
 	cCountry.SetBorder(BorderType::Double);
-	tAddress.SetBorder(BorderType::Double);
-	rSex.SetBorder(BorderType::Single);
+	lName.SetForeground(Color::Blue);
+	lAddress.SetForeground(Color::Orange);
+	lCountry.SetForeground(Color::Green);
+	lSex.SetForeground(Color::Purple);
+	lInterests.SetForeground(Color::Cyan);
+	lAge.SetForeground(Color::Red);
+
+	bSubmit.AddListener(SubmitListener::SubmitListener(results));
+	Button bOK(5);
+	bOK.SetValue("OK");
+	bOK.SetBackground(Color::Green);
+	bOK.AddListener(bOKListener::bOKListener(results));
+	results.addButton(bOK, 10, 10);
+
+	
 
 	Panel main(27, 55);
 	main.addControl(lName, 1, 2);
@@ -93,7 +117,7 @@ void main() {
 	main.addControl(bSubmit, 25, 25);
 	main.addControl(results, 5, 5);
 
-	main.SetBackground(Color::Cyan);
+	
 
 	Control::setFocus(tName);
 	EventEngine engine;

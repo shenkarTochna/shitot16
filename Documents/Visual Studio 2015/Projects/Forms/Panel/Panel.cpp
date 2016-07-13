@@ -18,14 +18,6 @@ bool Panel::canGetFocus() {
 }
 
 
-int Panel::getWidth() {
-	return this->width;
-}
-
-int Panel::getHeight() {
-	return this->height;
-}
-
 void Panel::addControl(Control& control, int left, int top) {
 	this->controls.push_back(&control);
 	control.setLeft(left);
@@ -35,10 +27,10 @@ void Panel::addControl(Control& control, int left, int top) {
 }
 
 void Panel::draw(Graphics graphics, int i, int j, size_t p) {
+
 	graphics.setBackground(this->background);
 	graphics.setForeground(this->foreground);
 	
-
 	graphics.write(i, j, "\xC9");
 	for (int k = 0; k < this->width; k++) {
 		graphics.write("\xCD");
@@ -55,15 +47,24 @@ void Panel::draw(Graphics graphics, int i, int j, size_t p) {
 	graphics.write("\xBC");
 
 
-
+	
 	for (int k = 0; k < this->controls.size(); k++) {
 
-		if (controls[k]->getShowed() == true) {
+		if (controls[k]->getShowed() == true && controls[k]->getLayer() == 0) {
 			controls[k]->draw(graphics, controls[k]->getLeft(), controls[k]->getTop(), 0);
 			controls[k]->drawBorder (controls[k]->getBorder());
 		}
-
 	}
+
+	for (int k = 0; k < this->controls.size(); k++) {
+
+		if (controls[k]->getShowed() == true && controls[k]->getLayer() > 0) {
+
+			controls[k]->draw(graphics, controls[k]->getLeft(), controls[k]->getTop(), 0);
+			controls[k]->drawBorder(controls[k]->getBorder());
+		}
+	}
+
 	graphics.setForeground(Color::White);
 	graphics.setBackground(Color::Black);
 }
@@ -78,7 +79,10 @@ void Panel::mousePressed(int x, int y, DWORD button) {
 		
 		if (isInside(x, y, this->controls[k]->getLeft(), this->controls[k]->getTop(), this->controls[k]->getWidth(), this->controls[k]->getHeight()))
 		{
-			setFocus(*this->controls[k]);
+			if (controls[k]->canGetFocus())
+			{
+				setFocus(*this->controls[k]);
+			}
 			this->controls[k]->mousePressed(x, y, button);
 
 			break;
@@ -88,15 +92,3 @@ void Panel::mousePressed(int x, int y, DWORD button) {
 };
 void Panel::keyDown(int keyCode, char character) {};
 
-void Panel::Show() {
-	this->showed = true;
-}
-
-void Panel::Hide() {
-	this->showed = true;
-}
-
-
-bool Panel::getShowed() {
-	return this->showed;
-}

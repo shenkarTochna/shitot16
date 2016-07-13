@@ -19,14 +19,6 @@ int NumericBox::GetValue() {
 	return this->value;
 }
 
-int NumericBox::getWidth() {
-	return this->width;
-}
-
-int NumericBox::getHeight() {
-	return this->height;
-}
-
 bool NumericBox::canGetFocus() {
 	return true;
 }
@@ -97,24 +89,18 @@ void NumericBox::mousePressed(int x, int y, DWORD button) {
 	graphics.moveTo(x,y);
 
 	if (x == this->getLeft() + 1) {
-		this->SetValue(this->value - 1);
+		if (this->value > this->min)
+		{
+			this->SetValue(this->value - 1);
+		}
 	}
 
 	if (x == (this->getLeft()+this->getWidth()-2)) {
-		this->SetValue(this->value + 1);
 
+		if (this->value < this->max)
+		{
+			this->SetValue(this->value + 1);
+		}
 	}
 
-}
-
-void NumericBox::Show() {
-	this->showed = true;
-}
-
-void NumericBox::Hide() {
-	this->showed = true;
-}
-
-bool NumericBox::getShowed() {
-	return this->showed;
 }
