@@ -55,5 +55,4 @@ public:
 	virtual void SetBackground(Color color);
 	void drawBackground();
 
-
 };
