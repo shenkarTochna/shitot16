@@ -20,7 +20,7 @@ int NumericBox::GetValue() {
 }
 
 bool NumericBox::canGetFocus() {
-	return true;
+	return false;
 }
 
 void NumericBox::draw(Graphics g, int i, int j, size_t p) {
@@ -53,35 +53,7 @@ void NumericBox::draw(Graphics g, int i, int j, size_t p) {
 
 }
 
-void NumericBox::keyDown(int keyCode, char character) {
-
-	this->graphics.setCursorVisibility(true);
-
-	for (int i = 0; i < 2; i++)
-	{
-		if (i == 0) {
-			graphics.moveTo(this->getLeft() + 1, this->getTop() + 1);
-		}
-		if (i == 1) {
-			graphics.moveTo(this->getLeft() + this->getWidth() + 6, this->getTop() + 1);
-		}
-		int c;
-		do {
-			c = getchar();
-			if (i == 0) {
-				this->SetValue(this->value - 1);
-				graphics.write(this->getLeft() + 4, this->getTop() + 1, std::to_string(this->GetValue()));
-
-			}
-			if (i == 1) {
-				this->SetValue(this->value + 1);
-				graphics.write(this->getLeft() + 4, this->getTop() + 1, std::to_string(this->GetValue()));
-
-			}
-		} while (c != VK_TAB);
-	}
-
-}
+void NumericBox::keyDown(int keyCode, char character) {}
 
 void NumericBox::mousePressed(int x, int y, DWORD button) {
 
